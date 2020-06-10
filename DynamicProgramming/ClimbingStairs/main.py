@@ -16,11 +16,29 @@ Example 1:
 
 
 def climbing_stairs(n):
-    if 0 < n <= 2:
-        return 1
-    elif n < 1:
+    if n == 0:
         return 0
+    elif n == 1:
+        return 1
+    elif n == 2:
+        return 2
 
-    f = []
-    f[0] = 1
-    f[1] = 2
+    ways_to_one_step_before = 2
+    ways_to_two_step_before = 1
+    all_ways = 0
+
+    for i in range(2, n):
+        all_ways = ways_to_one_step_before + ways_to_two_step_before
+        ways_to_two_step_before = ways_to_one_step_before
+        ways_to_one_step_before = all_ways
+
+    return all_ways
+
+
+def main():
+    print(climbing_stairs(10))
+
+
+if __name__ == "__main__":
+    main()
+

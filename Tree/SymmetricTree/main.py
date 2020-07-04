@@ -16,6 +16,7 @@ But the following [1,2,2,null,3,null,3] is not:
    \   \
    3    3
 """
+import collections
 
 
 class TreeNode:
@@ -36,6 +37,30 @@ def is_symmetric(self, root):
         return False
 
     return is_mirror(root, root)
+
+
+def is_symmetric_iterative(self, root):
+    # Each iteration, it checks whether two nodes are symmetric and then push (node1.left, node2.right),
+    # (node1.right, node2.left) to the end of queue.
+    if not root:
+        return True
+
+    dq = collections.deque([(root.left, root.right)],)
+    node1, node2 = dq.popleft()
+    while dq:
+        if not node1 and not node2:
+            continue
+        elif not node1 or not node2:
+            return False
+        elif node1.val != node2.val:
+            return False
+
+        # node1.left and node2.right are symmetric nodes in structure
+        # node1.right and node2.left are symmetric nodes in structure
+        dq.append((node1.left, node2.right))
+        dq.append((node1.right, node2.left))
+
+    return True
 
 
 def main():

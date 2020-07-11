@@ -56,11 +56,12 @@ def is_permutation_of_palindrome(st):
                 count += 1
         return count
 
-    st = st.strip(" ")
+    st = st.replace(' ', '')
+    st = st.lower()
     l1 = list(st)
     odd_count = find_odd_occurrences(l1)
-    # count the number of characters who occurs an odd number of times
-    if odd_count % 2 != 0:
+
+    if odd_count > 1:
         return False
     else:
         return True

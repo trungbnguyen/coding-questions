@@ -24,7 +24,7 @@ def merge_sort(s):
         else:
             s[k] = right[j]
             j += 1
-        k +=1
+        k += 1
 
     while i < len(left):
         s[k] = left[i]

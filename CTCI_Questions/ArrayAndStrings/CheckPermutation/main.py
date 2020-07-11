@@ -43,9 +43,7 @@ def check_permutation(s1, s2):
     l1 = list(s1)
     l2 = list(s2)
     a = merge_sort(l1)
-    print(a)
     b = merge_sort(l2)
-    print(b)
 
     return a == b
 

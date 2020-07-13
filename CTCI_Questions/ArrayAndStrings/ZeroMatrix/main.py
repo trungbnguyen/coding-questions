@@ -5,9 +5,9 @@ def zero_matrix(matrix):
     zero_rows = [i for i, row in enumerate(matrix) if not all(row)]
     zero_cols = [i for i, col in enumerate(zip(*matrix)) if not all(col)]
 
-    ncol = len(matrix[0])
+    number_of_cols = len(matrix[0])
     for rowi in zero_rows:
-        matrix[rowi] = [0] * ncol
+        matrix[rowi] = [0] * number_of_cols
 
     for coli in zero_cols:
         for row in matrix:
@@ -17,7 +17,7 @@ def zero_matrix(matrix):
 def display_matrix(matrix):
     for i in range(0, len(matrix)):
         for j in range(0, len(matrix[i])):
-            print(matrix[i][j], end=' ')
+            print(matrix[i][j], end=" ")
         print("")
 
 

@@ -107,7 +107,7 @@ def find_kth_to_last(ll, k):
     if size < k:
         return head
     else:
-        kth_to_last = size - k - 1
+        kth_to_last = size - k
         curr = ll.head
         for _ in range(kth_to_last):
             curr = curr.next
@@ -118,7 +118,7 @@ def main():
     ll = LinkedList()
     ll.generate()
     print(ll)
-    print(find_kth_to_last(ll, 3))
+    print(find_kth_to_last(ll, 7))
 
 
 if __name__ == "__main__":

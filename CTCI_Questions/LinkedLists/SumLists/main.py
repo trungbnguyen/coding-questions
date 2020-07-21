@@ -70,18 +70,19 @@ class LinkedList(object):
         return False
 
 
-def sum_list(n1, n2):
+def sum_list(ll1, ll2):
+    n1, n2 = ll1.head, ll2.head
     ll = LinkedList()
     carry = 0
 
-    while n1.head or n2.head:
+    while n1 or n2:
         result = carry
-        if n1.head:
-            result += n1.head.data
-            n1.head = n1.head.next
-        if n2.head:
-            result += n2.head.data
-            n2.head = n2.head.next
+        if n1:
+            result += n1.data
+            n1 = n1.next
+        if n2:
+            result += n2.data
+            n2 = n2.next
 
         ll.insert_tail(result % 10)
         carry = result // 10
@@ -103,6 +104,8 @@ def sum_list_follow_up(ll1, ll2):
     dummy1, dummy2 = ll1.head, ll2.head
     len1, len2 = ll_length(dummy1), ll_length(dummy2)
 
+    # if the number of digits between 2 numbers are different
+    # insert 0's at the head of the shorter number
     if len1 > len2:
         for _ in range(len1 - len2):
             ll2.insert_head(0)
@@ -132,8 +135,10 @@ def main():
     print(num1)
     print(num2)
     print(sum_list(num1, num2))
-    num1.insert_multiple([6, 9, 9])
-    num2.insert_multiple([3, 0, 2])
+    num1.insert_multiple([5, 7, 2])
+    num2.insert_multiple([1, 4, 2, 9])
+    print(num1)
+    print(num2)
     print(sum_list_follow_up(num1, num2))
 
 

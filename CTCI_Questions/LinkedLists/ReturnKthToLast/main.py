@@ -92,23 +92,28 @@ class LinkedList(object):
                 curr = curr.next
 
 
+def get_length(ll):
+    curr = ll.head
+    count = 0
+    while curr:
+        curr = curr.next
+        count += 1
+    return count
+
+
 def find_kth_to_last(ll, k):
     head = ll.head
     curr = ll.head
-    size = 0
 
     if head is None:
         return head
 
-    while curr:
-        curr = curr.next
-        size += 1
+    size = get_length(ll)
 
     if size < k:
         return head
     else:
         kth_to_last = size - k
-        curr = ll.head
         for _ in range(kth_to_last):
             curr = curr.next
         return curr.data

@@ -7,8 +7,14 @@ class Stack:
         self.main_stack = []
         self.min_stack = []
 
+    def size(self):
+        return len(self.main_stack)
+
+    def is_empty(self):
+        return self.size() == 0
+
     def push(self, item):
-        if self.size() == 0:
+        if self.is_empty():
             self.min_stack.append(item)
         else:
             self.min_stack.append(min(self.min_stack[self.size() - 1], item))
@@ -16,28 +22,18 @@ class Stack:
 
     def pop(self):
         if self.is_empty():
-            raise ValueError("Empty Stack")
-
+            raise ValueError("Empty stack")
         self.min_stack.pop()
         return self.min_stack.pop()
 
     def min(self):
         if self.is_empty():
             raise ValueError("Empty Stack")
-        top_min = self.min_stack[self.size() - 1]
-        return top_min
-
-    def is_full(self):
-        return self.size() == len(self.main_stack)
-
-    def is_empty(self):
-        return self.size() == 0
-
-    def size(self):
-        return len(self.main_stack)
+        min_top = self.min_stack[self.size() - 1]
+        return min_top
 
     def print_stack(self):
-        for i in range(self.size()):
+        for i in range(len(self.main_stack) - 1, -1, -1):
             print(self.main_stack[i], end='\n')
 
 
@@ -47,7 +43,7 @@ def main():
     stack.push(198)
     stack.push(7)
     stack.push(99)
-    stack.push(1)
+    stack.push(100)
     print("Min:", stack.min())
     stack.print_stack()
 

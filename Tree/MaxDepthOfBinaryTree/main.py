@@ -24,8 +24,22 @@ class TreeNode:
         self.val = val
 
 
-def tree_max_depth(self, root):
-    def traverse(left, right):
-        if not root:
-            return 0
-        count = 0
+def max_depth(root):
+    if not root:
+        return 0
+
+    return 1 + max(max_depth(root.left), max_depth(root.right))
+
+
+def main():
+    root = TreeNode(3)
+    root.left = TreeNode(9)
+    root.right = TreeNode(20)
+    root.right.left = TreeNode(15)
+    root.right.right = TreeNode(7)
+    print(max_depth(root))
+
+
+if __name__ == "__main__":
+    main()
+
